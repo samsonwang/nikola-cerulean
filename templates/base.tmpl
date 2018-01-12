@@ -60,39 +60,64 @@ ${base.html_head_end()}
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
-
 <!-- End of Menubar -->
 
 <div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            ${template_hooks['page_header']()}
-            <%block name="content"></%block>
-        </div>
-        <!--End of body content-->
+  <div class="body-content">
+    <!--Body content-->
+    <div class="row">
 
-        <footer id="footer">
-            ${content_footer}
-            ${template_hooks['page_footer']()}
-        </footer>
-    </div>
+      <div class="col-sm-9">
+        ${template_hooks['page_header']()}
+        <%block name="content"></%block>
+      </div>
+
+
+      <div class="col-sm-3 sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+          <h4>About</h4>
+          <p>About Me blabla blabla blabla blabla blabla blabl ablabla blablab labla blabla blabla blablabl abla blab lablabla blab lablabla blablablabla blabl ablabla blabl ablabla blab lablabla b labla</p>
+        </div>
+        <div class="sidebar-module">
+          <h4>Elsewhere</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </div><!--.sidebar-->
+    </div><!--.row-->
+
+    <%block name="pagination"></%block>
+    <%block name="comment"></%block>
+    <!--End of body content-->
+
+    <footer id="footer">
+      ${content_footer}
+      ${template_hooks['page_footer']()}
+    </footer>
+  </div>
 </div>
 
 ${base.late_load_js()}
-    <script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
-    <!-- fancy dates -->
-    <script>
+  <script>
+    $('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});
+  </script>
+  <!-- fancy dates -->
+  <script>
     moment.locale("${momentjs_locales[lang]}");
     fancydates(${date_fanciness}, ${js_date_format});
-    </script>
-    <!-- end fancy dates -->
-    <%block name="extra_js"></%block>
-    % if annotations and post and not post.meta('noannotations'):
-        ${notes.code()}
-    % elif not annotations and post and post.meta('annotations'):
-        ${notes.code()}
-    % endif
+  </script>
+  <!-- end fancy dates -->
+  
+  <%block name="extra_js"></%block>
+
+  % if annotations and post and not post.meta('noannotations'):
+    ${notes.code()}
+  % elif not annotations and post and post.meta('annotations'):
+    ${notes.code()}
+  % endif
 ${body_end}
 ${template_hooks['body_end']()}
 </body>
