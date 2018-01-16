@@ -440,6 +440,26 @@ article.post-micro {
     display: inline;
 }
 
+.metadata {
+    margin-bottom: 0;
+}
+
+.metadata .author {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.metadata .date {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.metadata .comment {
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+}
+
 .posttranslations h3, .translationslist h3 {
     display: inline;
     font-size: 1em;
