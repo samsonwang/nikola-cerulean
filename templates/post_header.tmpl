@@ -30,27 +30,32 @@
 </%def>
 
 <%def name="html_post_header()">
-    <header>
-        ${html_title()}
-        <div class="metadata">
-            <div class="author">
-                % if author_pages_generated:
-                    <a href="${_link('author', post.author())}">${post.author()|h}</a>
-                % else:
-                    ${post.author()|h}
-                % endif
-            </div>
-            <div class="date">
-              <a href="${post.permalink()}" rel="bookmark">
-                <time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
-                </time>
-              </a>
-            </div>
-            ${html_sourcelink()}
-            % if post.meta('link'):
-                <p class="linkline"><a href="${post.meta('link')}">${messages("Original site")}</a></p>
-            % endif
+  <header>
+    ${html_title()}
+      <div class="metadata">
+        <div class="author">
+          % if author_pages_generated:
+            <a href="${_link('author', post.author())}">${post.author()|h}</a>
+          % else:
+            ${post.author()|h}
+          % endif
         </div>
-        ${html_translations(post)}
-    </header>
+        <div class="date">
+          <a href="${post.permalink()}" rel="bookmark">
+            <time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
+            </time>
+          </a>
+        </div>
+        
+        ${html_sourcelink()}
+        
+        % if post.meta('link'):
+          <div class="link">
+            <a href="${post.meta('link')}">${messages("Original site")}</a>
+          </div>
+        % endif
+          
+      </div>
+      ${html_translations(post)}
+  </header>
 </%def>

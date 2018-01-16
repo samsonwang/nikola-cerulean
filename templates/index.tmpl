@@ -33,6 +33,8 @@
     <header>
       <h1 class="p-name entry-title"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h1>
       <div class="metadata">
+        
+        % if not post.author() == blog_author:
         <div class="author">
           % if author_pages_generated:
             <a href="${_link('author', post.author())}">${post.author()|h}</a>
@@ -40,7 +42,8 @@
             ${post.author()|h}
           % endif
         </div>
-
+        % endif
+        
         <div class="date">
           <a href="${post.permalink()}" rel="bookmark">
             <time class="published dt-published" datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
