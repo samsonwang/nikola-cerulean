@@ -113,6 +113,7 @@ lang="${lang}">
     %if use_bundles:
         %if use_cdn:
             <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <link href="/assets/css/all.css" rel="stylesheet" type="text/css">
         %else:
             <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -120,8 +121,10 @@ lang="${lang}">
     %else:
         %if use_cdn:
             <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         %else:
             <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         %endif
 
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">

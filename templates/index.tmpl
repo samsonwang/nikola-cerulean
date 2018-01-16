@@ -34,13 +34,11 @@
       <h1 class="p-name entry-title"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h1>
       <div class="metadata">
         <div class="author">
-          <span class="byline-name fn" itemprop="author">
-            % if author_pages_generated:
-              <a href="${_link('author', post.author())}">${post.author()|h}</a>
-            % else:
-              ${post.author()|h}
-            % endif
-          </span>
+          % if author_pages_generated:
+            <a href="${_link('author', post.author())}">${post.author()|h}</a>
+          % else:
+            ${post.author()|h}
+          % endif
         </div>
 
         <div class="date">
