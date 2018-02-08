@@ -58,10 +58,3 @@ ${helper.html_pager(post)}
 ${comments.comment_link_script()}
 </%block>
 
-<%block name="sourcelink">
-% if show_sourcelink:
-    <li>
-    <a href="${post.source_link()}" id="sourcelink">${messages("Source")}</a>
-    </li>
-% endif
-</%block>

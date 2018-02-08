@@ -58,9 +58,6 @@ ${base.html_head_end()}
             <li>${base.html_translations()}</li>
           % endif
         </%block>
-        % if show_sourcelink:
-          <%block name="sourcelink"></%block>
-        % endif
         ${template_hooks['menu_alt']()}
       </ul>
     </div><!-- /.navbar-collapse -->
