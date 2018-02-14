@@ -15,7 +15,7 @@ ${template_hooks['extra_head']()}
 
 ${base.html_head_end()}
 
-<body>  
+<body>
 <a href="#content" class="sr-only sr-only-focusable">${messages("Skip to main content")}</a>
 
 <!-- Menubar -->
@@ -38,7 +38,7 @@ ${base.html_head_end()}
       % if show_blog_title:
         <span id="blog-title">${blog_title|h}</span>
       % endif
-      </a>  
+      </a>
     </div>
     
     <!-- /.navbar-header -->
@@ -75,20 +75,8 @@ ${base.html_head_end()}
       </div>
 
       <div class="col-sm-3 sidebar">
-        <div class="sidebar-module sidebar-module-inset">
-          <h4>About Me</h4>
-          ${about_me}
-        </div>
-        
-        <div class="sidebar-module">
-          <h4>Elsewhere</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-          </ol>
-        </div>
-        
+       ${base.sidebar_about()}
+       ${base.sidebar_categories()}
       </div><!--.sidebar-->
     </div><!--.row-->
 
