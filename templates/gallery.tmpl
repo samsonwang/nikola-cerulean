@@ -5,22 +5,26 @@
 <%block name="sourcelink"></%block>
 
 <%block name="content">
-    ${ui.bar(crumbs)}
-    %if title:
+  ${ui.bar(crumbs)}
+
+##    %if title:
+##    <h1>${title|h}</h1>
+##    %endif
+
+  %if post:
     <h1>${title|h}</h1>
-    %endif
-    %if post:
     <p>
         ${post.text()}
     </p>
-    %endif
-    %if folders:
+  %endif
+
+  %if folders:
     <ul>
     % for folder, ftitle in folders:
         <li><a href="${folder}"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;${ftitle|h}</a></li>
     % endfor
     </ul>
-    %endif
+  %endif
 
 <div id="gallery_container"></div>
 %if photo_array:
@@ -33,6 +37,7 @@
 </ul>
 </noscript>
 %endif
+
 %if site_has_comments and enable_comments:
 ${comments.comment_form(None, permalink, title)}
 %endif
