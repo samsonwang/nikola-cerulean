@@ -5,21 +5,20 @@
 
 <%def name="html_head_start()">
 <!DOCTYPE html>
-<html
-\
+<html \
 % if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']) or (comment_system == 'facebook'):
 prefix='\
-%if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']):
+% if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']):
 og: http://ogp.me/ns# \
-%endif
-%if use_open_graph:
+% endif
+% if use_open_graph:
 article: http://ogp.me/ns/article# \
-%endif
-%if comment_system == 'facebook':
+% endif
+% if comment_system == 'facebook':
 fb: http://ogp.me/ns/fb# \
-%endif
+% endif
 '\
-%endif
+% endif
 \
 % if is_rtl:
 dir="rtl" \
@@ -31,15 +30,15 @@ lang="${lang}">
     % if use_base_tag:
     <base href="${abs_link(permalink)}">
     % endif
-    %if description:
+    % if description:
     <meta name="description" content="${description|h}">
-    %endif
+    % endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    %if title == blog_title:
+    % if title == blog_title:
         <title>${blog_title|h}</title>
-    %else:
+    % else:
         <title>${title|h} | ${blog_title|h}</title>
-    %endif
+    % endif
 
     ${html_stylesheets()}
     <meta name="theme-color" content="${theme_color}">
@@ -49,28 +48,28 @@ lang="${lang}">
     ${feeds_translations.head()}
     <link rel="canonical" href="${abs_link(permalink)}">
 
-    %if favicons:
-        %for name, file, size in favicons:
+    % if favicons:
+        % for name, file, size in favicons:
             <link rel="${name}" href="${file}" sizes="${size}"/>
-        %endfor
-    %endif
+        % endfor
+    % endif
 
     % if comment_system == 'facebook':
         <meta property="fb:app_id" content="${comment_system_id}">
     % endif
 
-    %if prevlink:
+    % if prevlink:
         <link rel="prev" href="${prevlink}" type="text/html">
-    %endif
-    %if nextlink:
+    % endif
+    % if nextlink:
         <link rel="next" href="${nextlink}" type="text/html">
-    %endif
+    % endif
 
-    %if use_cdn:
+    % if use_cdn:
         <!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    %else:
+    % else:
         <!--[if lt IE 9]><script src="${url_replacer(permalink, '/assets/js/html5.js', lang, url_type)}"></script><![endif]-->
-    %endif
+    % endif
 
     ${extra_head_data}
 </%def>
@@ -82,29 +81,29 @@ lang="${lang}">
 
 
 <%def name="late_load_js()">
-    %if use_bundles:
-        %if use_cdn:
+    % if use_bundles:
+        % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>            
             <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             <script src="/assets/js/all.js"></script>
-        %else:
+        % else:
             <script src="/assets/js/all-nocdn.js"></script>
-        %endif
-    %else:
-        %if use_cdn:
+        % endif
+    % else:
+        % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>            
             <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        %else:
+        % else:
             <script src="/assets/js/jquery.min.js"></script>
             <script src="/assets/js/bootstrap.min.js"></script>
-        %endif
+        % endif
         <script src="/assets/js/moment-with-locales.min.js"></script>
         <script src="/assets/js/fancydates.js"></script>
         <script src="/assets/js/jquery.colorbox-min.js"></script>
-    %endif
-    %if colorbox_locales[lang]:
+    % endif
+    % if colorbox_locales[lang]:
         <script src="/assets/js/colorbox-i18n/jquery.colorbox-${colorbox_locales[lang]}.js"></script>
-    %endif
+    % endif
     ${social_buttons_code}
 </%def>
 
@@ -127,6 +126,7 @@ lang="${lang}">
             <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         %endif
 
+        ## code.css 由 Nikola 负责生成
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/colorbox.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/cerulean.css" rel="stylesheet" type="text/css">
