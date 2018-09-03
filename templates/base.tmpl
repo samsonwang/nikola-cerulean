@@ -22,7 +22,7 @@ ${base.html_head_end()}
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
   <!-- This keeps the margins nice -->
-    
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
         <span class="sr-only">${messages("Toggle navigation")}</span>
@@ -40,14 +40,14 @@ ${base.html_head_end()}
       % endif
       </a>
     </div>
-    
+
     <!-- /.navbar-header -->
     <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
       <ul class="nav navbar-nav">
         ${base.html_navigation_links()}
         ${template_hooks['menu']()}
       </ul>
-      
+
       % if search_form:
         ${search_form}
       % endif
@@ -91,6 +91,8 @@ ${base.html_head_end()}
   </div>
 </div>
 
+<a id="scroll-top" title="back to top">Top</a>
+
 ${base.late_load_js()}
   <script>
     $('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});
@@ -101,7 +103,7 @@ ${base.late_load_js()}
     fancydates(${date_fanciness}, ${js_date_format});
   </script>
   <!-- end fancy dates -->
-  
+
   <%block name="extra_js"></%block>
 
   % if annotations and post and not post.meta('noannotations'):
