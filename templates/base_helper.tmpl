@@ -83,7 +83,7 @@ lang="${lang}">
 <%def name="late_load_js()">
     % if use_bundles:
         % if use_cdn:
-            <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>            
+            <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             <script src="/assets/js/all.js"></script>
         % else:
@@ -91,7 +91,7 @@ lang="${lang}">
         % endif
     % else:
         % if use_cdn:
-            <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>            
+            <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         % else:
             <script src="/assets/js/jquery.min.js"></script>
@@ -221,4 +221,3 @@ lang="${lang}">
 % endif
 </div>
 </%def>
-
