@@ -5,21 +5,11 @@
 
 <%def name="html_head_start()">
 <!DOCTYPE html>
-<html \
-% if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']) or (comment_system == 'facebook'):
-prefix='\
-% if use_open_graph or (twitter_card and twitter_card['use_twitter_cards']):
-og: http://ogp.me/ns# \
-% endif
-% if use_open_graph:
-article: http://ogp.me/ns/article# \
-% endif
+<html prefix='og: http://ogp.me/ns# article: http://ogp.me/ns/article# \
 % if comment_system == 'facebook':
 fb: http://ogp.me/ns/fb# \
 % endif
 '\
-% endif
-\
 % if is_rtl:
 dir="rtl" \
 % endif
@@ -107,9 +97,11 @@ lang="${lang}">
         <script src="/assets/js/fancydates.js"></script>
         <script src="/assets/js/cerulean.js"></script>
     % endif
-    % if colorbox_locales[lang]:
-        <script src="/assets/js/colorbox-i18n/jquery.colorbox-${colorbox_locales[lang]}.js"></script>
-    % endif
+
+##    % if colorbox_locales[lang]:
+##        <script src="/assets/js/colorbox-i18n/jquery.colorbox-${colorbox_locales[lang]}.js"></script>
+##    % endif
+
     ${social_buttons_code}
 </%def>
 
