@@ -76,6 +76,7 @@ lang="${lang}">
     % if use_bundles:
         % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdn.bootcss.com/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
             <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
             <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
             <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -86,11 +87,13 @@ lang="${lang}">
     % else:
         % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdn.bootcss.com/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
             <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
             <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
             <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         % else:
             <script src="/assets/js/jquery.min.js"></script>
+            <script src="/assets/js/jquery.colorbox-min.js"></script>
             <script src="/assets/js/jquery.lazyload.min.js"></script>
             <script src="/assets/js/popper.min.js"></script>
             <script src="/assets/js/bootstrap.min.js"></script>
@@ -124,6 +127,7 @@ lang="${lang}">
 
         ## code.css 由 Nikola 负责生成
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/colorbox.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/highlight.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/cerulean.css" rel="stylesheet" type="text/css">
 
