@@ -5,13 +5,13 @@
 
 <%def name="html_head_start()">
 <!DOCTYPE html>
-<html prefix='og: http://ogp.me/ns# article: http://ogp.me/ns/article# \
+<html prefix='og: http://ogp.me/ns# article: http://ogp.me/ns/article#\
 % if comment_system == 'facebook':
-fb: http://ogp.me/ns/fb# \
+fb: http://ogp.me/ns/fb#\
 % endif
 '\
 % if is_rtl:
-dir="rtl" \
+dir="rtl"\
 % endif
 \
 lang="${lang}">
@@ -55,6 +55,8 @@ lang="${lang}">
         <link rel="next" href="${nextlink}" type="text/html">
     % endif
 
+    ${mathjax_config}
+
     % if use_cdn:
         <!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     % else:
@@ -75,8 +77,8 @@ lang="${lang}">
         % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-            <script src="https://cdn.bootcss.com/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
-            <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
             <script src="/assets/js/all.js"></script>
         % else:
             <script src="/assets/js/all-nocdn.js"></script>
@@ -85,22 +87,18 @@ lang="${lang}">
         % if use_cdn:
             <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-            <script src="https://cdn.bootcss.com/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
-            <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         % else:
             <script src="/assets/js/jquery.min.js"></script>
             <script src="/assets/js/jquery.lazyload.min.js"></script>
-            <script src="/assets/js/jquery.colorbox-min.js"></script>
+            <script src="/assets/js/popper.min.js"></script>
             <script src="/assets/js/bootstrap.min.js"></script>
         % endif
         <script src="/assets/js/moment-with-locales.min.js"></script>
         <script src="/assets/js/fancydates.js"></script>
         <script src="/assets/js/cerulean.js"></script>
     % endif
-
-##    % if colorbox_locales[lang]:
-##        <script src="/assets/js/colorbox-i18n/jquery.colorbox-${colorbox_locales[lang]}.js"></script>
-##    % endif
 
     ${social_buttons_code}
 </%def>
@@ -109,7 +107,7 @@ lang="${lang}">
 <%def name="html_stylesheets()">
     %if use_bundles:
         %if use_cdn:
-            <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
             <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <link href="/assets/css/all.css" rel="stylesheet" type="text/css">
         %else:
@@ -117,7 +115,7 @@ lang="${lang}">
         %endif
     %else:
         %if use_cdn:
-            <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
             <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         %else:
             <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -127,7 +125,6 @@ lang="${lang}">
         ## code.css 由 Nikola 负责生成
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/highlight.css" rel="stylesheet" type="text/css">
-        <link href="/assets/css/colorbox.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/cerulean.css" rel="stylesheet" type="text/css">
 
         %if has_custom_css:
@@ -148,39 +145,63 @@ lang="${lang}">
 </%def>
 
 <%def name="html_navigation_links()">
-    %for url, text in navigation_links[lang]:
+    ${html_navigation_links_entries(navigation_links)}
+</%def>
+
+<%def name="html_navigation_links_entries(navigation_links_source)">
+    % for url, text in navigation_links_source[lang]:
         % if isinstance(url, tuple):
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${text} <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+            <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${text}</a>
+            <div class="dropdown-menu">
             %for suburl, text in url:
                 % if rel_link(permalink, suburl) == "#":
-                    <li class="active"><a href="${permalink}">${text} <span class="sr-only">${messages("(active)", lang)}</span></a>
+                    <a href="${permalink}" class="dropdown-item active">${text} <span class="sr-only">${messages("(active)", lang)}</span></a>
                 %else:
-                    <li><a href="${suburl}">${text}</a>
+                    <a href="${suburl}" class="dropdown-item">${text}</a>
                 %endif
             %endfor
-            </ul>
+            </div>
         % else:
             % if rel_link(permalink, url) == "#":
-                <li class="active"><a href="${permalink}">${text} <span class="sr-only">${messages("(active)", lang)}</span></a>
+                <li class="nav-item active"><a href="${permalink}" class="nav-link">${text} <span class="sr-only">${messages("(active)", lang)}</span></a>
             %else:
-                <li><a href="${url}">${text}</a>
+                <li class="nav-item"><a href="${url}" class="nav-link">${text}</a>
             %endif
         % endif
     %endfor
 </%def>
 
 <%def name="html_feedlinks()">
-    ${feeds_translations.head()}
+    %if rss_link:
+        ${rss_link}
+    %elif generate_rss:
+        %if len(translations) > 1:
+            %for language in sorted(translations):
+                <link rel="alternate" type="application/rss+xml" title="RSS (${language})" href="${_link('rss', None, language)}">
+            %endfor
+        %else:
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="${_link('rss', None)}">
+        %endif
+    %endif
+    %if generate_atom:
+        %if len(translations) > 1:
+            %for language in sorted(translations):
+                <link rel="alternate" type="application/atom+xml" title="Atom (${language})" href="${_link('index_atom', None, language)}">
+            %endfor
+        %else:
+            <link rel="alternate" type="application/atom+xml" title="Atom" href="${_link('index_atom', None)}">
+        %endif
+    %endif
 </%def>
 
 <%def name="html_translations()">
     %for langname in sorted(translations):
         %if langname != lang:
-            <li><a href="${abs_link(_link("root", None, langname))}" rel="alternate" hreflang="${langname}">${messages("LANGUAGE", langname)}</a></li>
+            <li class="nav-item"><a href="${abs_link(_link("root", None, langname))}" rel="alternate" hreflang="${langname}" class="nav-link">${messages("LANGUAGE", langname)}</a></li>
         %endif
     %endfor
 </%def>
+
 
 <%def name="sidebar_about()">
 <div class="sidebar-module sidebar-module-inset">

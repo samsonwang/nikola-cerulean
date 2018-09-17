@@ -48,13 +48,10 @@ ${helper.html_pager(post)}
 
 <%block name="comment">
 %if not post.meta('nocomments') and site_has_comments:
-  <div class="row">
   <section class="comments hidden-print">
     <h2>${messages("Comments")}</h2>
     ${comments.comment_form(post.permalink(absolute=True), post.title(), post._base_path)}
   </section>
-  </div>
 % endif
 ${comments.comment_link_script()}
 </%block>
-

@@ -6,10 +6,10 @@ ${ui.breadcrumbs(crumbs)}
 %if folders or files:
 <ul>
 % for name in folders:
-    <li><a href="${name|u}"><i class="glyphicon glyphicon-folder-open"></i> ${name|h}</a>
+    <li><a href="${name|u}"><i class="fa fa-folder-open"></i> ${name|h}</a>
 % endfor
 % for name in files:
-    <li><a href="${name|u}.html"><i class="glyphicon glyphicon-file"></i> ${name|h}</a>
+    <li><a href="${name|u}.html"><i class="fa fa-file"></i> ${name|h}</a>
 % endfor
 </ul>
 %endif
@@ -24,9 +24,7 @@ ${ui.breadcrumbs(crumbs)}
 </%block>
 
 <%block name="sourcelink">
-% if source_link:
-    <li>
-    <a href="${source_link}" id="sourcelink">${messages("Source")}</a>
-    </li>
+% if source_link and show_sourcelink:
+    ${ui.show_sourcelink(source_link)}
 % endif
 </%block>

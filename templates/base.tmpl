@@ -19,32 +19,26 @@ ${base.html_head_end()}
 <a href="#content" class="sr-only sr-only-focusable">${messages("Skip to main content")}</a>
 
 <!-- Menubar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-  <!-- This keeps the margins nice -->
+<nav class="navbar navbar-expand-md fixed-top mb-4 navbar-dark bg-dark">
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-        <span class="sr-only">${messages("Toggle navigation")}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="${abs_link(_link("root", None, lang))}">
+  <div class="container">   <!-- This keeps the margins nice -->
+    <a class="navbar-brand" href="${abs_link(_link("root", None, lang))}">
       % if logo_url:
-        <img src="${logo_url}" alt="${blog_title|h}" id="logo">
+      <img src="${logo_url}" alt="${blog_title|h}" id="logo" class="d-inline-block align-top">
       % endif
 
       % if show_blog_title:
-        <span id="blog-title">${blog_title|h}</span>
+      <span id="blog-title">${blog_title|h}</span>
       % endif
-      </a>
-    </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- /.navbar-header -->
-    <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-      <ul class="nav navbar-nav">
-        ${base.html_navigation_links()}
+    <div class="collapse navbar-collapse" id="bs-navbar">
+      <ul class="navbar-nav mr-auto">
+        ${base.html_navigation_links_entries(navigation_links)}
+      ##  ${base.html_navigation_links()}
         ${template_hooks['menu']()}
       </ul>
 
@@ -52,7 +46,8 @@ ${base.html_head_end()}
         ${search_form}
       % endif
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="navbar-nav navbar-right">
+        ${base.html_navigation_links_entries(navigation_alt_links)}
         <%block name="belowtitle">
           % if len(translations) > 1:
             <li>${base.html_translations()}</li>
@@ -97,9 +92,6 @@ ${base.html_head_end()}
 </div>
 
 ${base.late_load_js()}
-  <script>
-    $('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});
-  </script>
   <!-- fancy dates -->
   <script>
     moment.locale("${momentjs_locales[lang]}");

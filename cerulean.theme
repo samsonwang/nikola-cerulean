@@ -3,7 +3,7 @@ engine = mako
 parent = base
 author = SamsonWang
 author_url = http://samsonWang.me/
-based_on = Bootstrap3 <https://getbootstrap.com/>
+based_on = Bootstrap4 <https://getbootstrap.com/>
 license = MIT
 tags = bootstrap, cerulean
 
