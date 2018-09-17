@@ -102,6 +102,10 @@ header {
   margin-bottom: 15px;
 }
 
+.p-name {
+  color: #04498e;
+}
+
 article h2:before {
   content: "# ";
 }
@@ -112,6 +116,10 @@ article h3:before {
 
 article h4:before {
   content: "### ";
+}
+
+article.h-entry.post-text {
+  margin-bottom: 25px;
 }
 
 .tags {
@@ -341,11 +349,6 @@ p.more {
 }
 .sidebar-category a:hover {
   text-decoration: none;
-}
-
-/* main page article margin */
-article.h-entry.post-text {
-  margin-bottom: 50px;
 }
 
 .breadcrumb>li+li:before {
