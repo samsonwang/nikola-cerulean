@@ -2,7 +2,7 @@
 body {
   color: #555;
   padding-top: 4.5rem;
-  line-height: 1.8;
+  line-height: 1.8rem;
   font-family: Helvetica, Arial, sans-serif, Consolas;
 }
 
@@ -72,6 +72,10 @@ h3,
   font-size: 20px;
 }
 
+p {
+  margin-bottom: 0.2rem;
+}
+
 a {
   color: #04498e;
   text-decoration: none;
@@ -90,6 +94,7 @@ pre {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border-radius: 4px;
+  line-height: 1.3rem;
 }
 
 code {
@@ -108,6 +113,10 @@ header {
 
 article h2:before {
   content: "# ";
+}
+
+article h2:hover:before {
+  color: #04498e;
 }
 
 article h3:before {
