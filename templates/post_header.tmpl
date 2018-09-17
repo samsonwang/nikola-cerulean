@@ -4,7 +4,7 @@
 
 <%def name="html_title()">
 %if title and not post.meta('hidetitle'):
-    <h1 class="p-name entry-title" itemprop="headline name"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h1>
+    <h1 class="p-name entry-title" itemprop="headline name">${post.title()|h}</h1>
 %endif
 </%def>
 
@@ -46,16 +46,17 @@
             </time>
           </a>
         </div>
-        
+
         ${html_sourcelink()}
-        
+
         % if post.meta('link'):
           <div class="link">
             <a href="${post.meta('link')}">${messages("Original site")}</a>
           </div>
         % endif
-          
+
       </div>
       ${html_translations(post)}
+      ${helper.html_tags(post)}
   </header>
 </%def>
