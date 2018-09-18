@@ -22,15 +22,6 @@ body {
   font-family: Helvetica, Arial, sans-serif, Consolas;
 }
 
-/*
-body * {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
-}
-*/
-
 .bg-dark {
   background-image: linear-gradient($cerulean-blue3,
                                     $cerulean-blue2 60%,
@@ -82,11 +73,13 @@ h6,
 
 h1,
 .h1 {
+  padding-top: 0.6rem;
   font-size: 28px;
 }
 
 h2,
 .h2 {
+  padding-top: 0.6rem;
   font-size: 24px;
 }
 
@@ -306,6 +299,33 @@ div.figure > a > img {
   }
 }
 
+blockquote {
+  margin: .4rem 1rem .5rem 2.5rem;
+  padding: 5px 10px 5px 20px;
+  border: 1px solid $cerulean-grey3;
+  border-left: 3px solid $cerulean-grey2;
+  border-radius: 10px;
+  font-size: 95%;
+  &:before {
+    position: absolute;
+    left: 1rem;
+    font-family: FontAwesome;
+    font-size: 2rem;
+    font-weight: normal;
+    font-style: normal;
+    content: "\f10d";
+    color: $cerulean-grey2;
+  }
+  &:hover:before {
+    color: $cerulean-grey1;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+
 /* Custom page footer */
 #footer {
   padding-top: 19px;
@@ -369,6 +389,7 @@ p.more {
 }
 
 .pager {
+  margin-top: 1rem;
   padding-left: 0;
   padding-bottom: 2.5rem;
   li {

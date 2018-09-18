@@ -6,14 +6,6 @@ body {
   font-family: Helvetica, Arial, sans-serif, Consolas;
 }
 
-/*
-body * {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
-}
-*/
 .bg-dark {
   background-image: linear-gradient(#04519b, #033C73 60%, #02325f);
   background-repeat: no-repeat;
@@ -56,11 +48,13 @@ h6,
 
 h1,
 .h1 {
+  padding-top: 0.6rem;
   font-size: 28px;
 }
 
 h2,
 .h2 {
+  padding-top: 0.6rem;
   font-size: 24px;
 }
 
@@ -268,6 +262,31 @@ div.figure > a > img {
   margin-left: 2px;
 }
 
+blockquote {
+  margin: 0.4rem 1rem 0.5rem 2.5rem;
+  padding: 5px 10px 5px 20px;
+  border: 1px solid #e2e2e2;
+  border-left: 3px solid #c1c1c1;
+  border-radius: 10px;
+  font-size: 95%;
+}
+blockquote:before {
+  position: absolute;
+  left: 1rem;
+  font-family: FontAwesome;
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+  content: "";
+  color: #c1c1c1;
+}
+blockquote:hover:before {
+  color: #939393;
+}
+blockquote p {
+  margin: 0;
+}
+
 /* Custom page footer */
 #footer {
   padding-top: 19px;
@@ -336,6 +355,7 @@ p.more {
 }
 
 .pager {
+  margin-top: 1rem;
   padding-left: 0;
   padding-bottom: 2.5rem;
 }
