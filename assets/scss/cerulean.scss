@@ -231,101 +231,79 @@ div.figure > a > img {
 
 .metadata {
   margin-bottom: 0;
-}
 
-.metadata .author {
-  display: inline-block;
-  margin-right: 10px;
-}
+  a {
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
 
-.metadata .author:before {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  content: "\f007";
-  margin-right: 2px;
-}
+  .author {
+    display: inline-block;
+    margin-right: 10px;
+    &:before {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      content: "\f007";
+      margin-right: 2px;
+    }
+  }
 
-.metadata .author a:hover,
-.metadata .author a:focus {
-  text-decoration: none;
-}
+  .date {
+    display: inline-block;
+    margin-right: 10px;
+    &:before {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      content: "\f017";
+      margin-right: 2px;
+    }
+  }
 
-.metadata .date {
-  display: inline-block;
-  margin-right: 10px;
-}
+  .source {
+    display: inline-block;
+    margin-right: 10px;
+    &:before {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      content: "\f0ed";
+      margin-right: 2px;
+    }
+  }
 
-.metadata .date:before {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  content: "\f017";
-  margin-right: 2px;
-}
+  .link {
+    display: inline-block;
+    margin-right: 10px;
+    &:before {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      content: "\f0c1";
+      margin-right: 3px;
+    }
 
-.metadata .date a:hover,
-.metadata .date a:focus {
-  text-decoration: none;
-}
+  }
 
-.metadata .source {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.metadata .source:before {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  content: "\f0ed";
-  margin-right: 2px;
-}
-
-.metadata .source a:hover,
-.metadata .source a:focus {
-  text-decoration: none;
-}
-
-.metadata .link {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.metadata .link:before {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  content: "\f0c1";
-  margin-right: 3px;
-}
-
-.metadata .link a:hover,
-.metadata .link a:focus {
-  text-decoration: none;
-}
-
-.metadata .comment {
-  display: inline-block;
-  float: right;
-  margin-right: 5px;
-}
-
-.metadata .comment:after {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  content: "\f27b";
-  margin-left: 2px;
-}
-
-.metadata .comment a:hover {
-  text-decoration: none;
+  .comment {
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+    &:after {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      content: "\f27b";
+      margin-left: 2px;
+    }
+  }
 }
 
 /* Custom page footer */

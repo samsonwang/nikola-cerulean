@@ -203,12 +203,13 @@ div.figure > a > img {
 .metadata {
   margin-bottom: 0;
 }
-
+.metadata a:hover, .metadata a:focus {
+  text-decoration: none;
+}
 .metadata .author {
   display: inline-block;
   margin-right: 10px;
 }
-
 .metadata .author:before {
   font-family: FontAwesome;
   font-weight: normal;
@@ -217,17 +218,10 @@ div.figure > a > img {
   content: "";
   margin-right: 2px;
 }
-
-.metadata .author a:hover,
-.metadata .author a:focus {
-  text-decoration: none;
-}
-
 .metadata .date {
   display: inline-block;
   margin-right: 10px;
 }
-
 .metadata .date:before {
   font-family: FontAwesome;
   font-weight: normal;
@@ -236,17 +230,10 @@ div.figure > a > img {
   content: "";
   margin-right: 2px;
 }
-
-.metadata .date a:hover,
-.metadata .date a:focus {
-  text-decoration: none;
-}
-
 .metadata .source {
   display: inline-block;
   margin-right: 10px;
 }
-
 .metadata .source:before {
   font-family: FontAwesome;
   font-weight: normal;
@@ -255,17 +242,10 @@ div.figure > a > img {
   content: "";
   margin-right: 2px;
 }
-
-.metadata .source a:hover,
-.metadata .source a:focus {
-  text-decoration: none;
-}
-
 .metadata .link {
   display: inline-block;
   margin-right: 10px;
 }
-
 .metadata .link:before {
   font-family: FontAwesome;
   font-weight: normal;
@@ -274,18 +254,11 @@ div.figure > a > img {
   content: "";
   margin-right: 3px;
 }
-
-.metadata .link a:hover,
-.metadata .link a:focus {
-  text-decoration: none;
-}
-
 .metadata .comment {
   display: inline-block;
   float: right;
   margin-right: 5px;
 }
-
 .metadata .comment:after {
   font-family: FontAwesome;
   font-weight: normal;
@@ -293,10 +266,6 @@ div.figure > a > img {
   -webkit-font-smoothing: antialiased;
   content: "";
   margin-left: 2px;
-}
-
-.metadata .comment a:hover {
-  text-decoration: none;
 }
 
 /* Custom page footer */
