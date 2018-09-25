@@ -45,6 +45,17 @@
         </div>
         % endif
 
+        % if post.tags:
+        <i class="fa fa-tags"></i>
+        <ul itemprop="keywords" class="tags inline">
+        % for tag in post.tags:
+          % if tag not in hidden_tags:
+          <li><a class="tag p-category" href="${_link('tag', tag)}" rel="tag">${tag|h}</a></li>
+          % endif
+        % endfor
+        </ul>
+        % endif
+
         <div class="date">
           <a href="${post.permalink()}" rel="bookmark">
             <time class="published dt-published" datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
@@ -52,23 +63,24 @@
           </a>
         </div>
 
-        % if not post.meta('nocomments') and site_has_comments:
-          <div class="comment">
-            ${comments.comment_link(post.permalink(), post._base_path)}
-          </div>
-        % endif
+##        % if not post.meta('nocomments') and site_has_comments:
+##          <div class="comment">
+##            ${comments.comment_link(post.permalink(), post._base_path)}
+##          </div>
+##        % endif
 
       </div>
     </header>
 
-    %if index_teasers:
-      <div class="p-summary entry-summary">
-      ${post.text(teaser_only=True)}
-    %else:
-      <div class="e-content entry-content">
-      ${post.text(teaser_only=False)}
-    %endif
-    </div>
+##    %if index_teasers:
+##      <div class="p-summary entry-summary">
+##      ${post.text(teaser_only=True)}
+##    %else:
+##      <div class="e-content entry-content">
+##      ${post.text(teaser_only=False)}
+##      %endif
+##    </div>
+
   </article>
 % endfor
 
