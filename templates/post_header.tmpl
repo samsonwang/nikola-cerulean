@@ -41,10 +41,8 @@
           % endif
         </div>
         <div class="date">
-          <a href="${post.permalink()}" rel="bookmark">
-            <time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
-            </time>
-          </a>
+          <time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date('YYYY-MM-dd HH:mm')|h}">${post.formatted_date(date_format)|h}
+          </time>
         </div>
 
         ${html_sourcelink()}

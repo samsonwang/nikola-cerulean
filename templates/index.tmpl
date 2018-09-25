@@ -57,11 +57,18 @@
         % endif
 
         <div class="date">
-          <a href="${post.permalink()}" rel="bookmark">
-            <time class="published dt-published" datetime="${post.formatted_date('webiso')}" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}
+##          <a href="${post.permalink()}" rel="bookmark">
+            <time class="published dt-published" datetime="${post.formatted_date('webiso')}" title="${post.formatted_date('YYYY-MM-dd HH:mm')|h}">${post.formatted_date(date_format)|h}
             </time>
-          </a>
+##          </a>
         </div>
+
+        <div class="desc">
+          % if post.meta('description'):
+          <p>${post.meta('description')}</p>
+          % endif
+        </div>
+
 
 ##        % if not post.meta('nocomments') and site_has_comments:
 ##          <div class="comment">
