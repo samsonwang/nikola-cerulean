@@ -24,7 +24,7 @@
 <%def name="html_sourcelink()">
   % if show_sourcelink:
     <div class="source">
-      <p class="sourceline"><a href="${post.source_link()}" class="sourcelink">${messages("Source")}</a></p>
+      <a href="${post.source_link()}" class="sourcelink">${messages("Source")}</a>
     </div>
   % endif
 </%def>
