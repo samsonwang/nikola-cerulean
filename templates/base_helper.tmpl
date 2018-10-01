@@ -210,7 +210,7 @@ lang="${lang}">
 <%def name="sidebar_about()">
 <div class="sidebar-module sidebar-module-inset">
   <h4>About Me</h4>
-  ${sidebar_about_me}
+  ${theme_config.get('sidebar_aboutme')}
 </div>
 </%def>
 
@@ -218,7 +218,7 @@ lang="${lang}">
 <%def name="sidebar_categories()">
 <div class="sidebar-module">
   <h4>${messages("Categories")}</h4>
-  ${sidebar_category_item}
+  ${theme_config.get('sidebar_categories')}
 </div>
 </%def>
 

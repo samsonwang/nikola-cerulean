@@ -1,10 +1,10 @@
 ## -*- coding: utf-8 -*-
-<%namespace name="base" file="base_helper.tmpl" />
+<%namespace name="helper" file="base_helper.tmpl" />
 <%namespace name="notes" file="annotation_helper.tmpl" />
 
 ${set_locale(lang)}
 
-${base.html_head_start()}
+${helper.html_head_start()}
 
 <%block name="extra_head">
 ## Leave this block alone.
@@ -13,7 +13,7 @@ ${base.html_head_start()}
 
 ${template_hooks['extra_head']()}
 
-${base.html_head_end()}
+${helper.html_head_end()}
 
 <body class="preload">
 <a href="#content" class="sr-only sr-only-focusable">${messages("Skip to main content")}</a>
@@ -37,7 +37,7 @@ ${base.html_head_end()}
 
     <div class="collapse navbar-collapse" id="bs-navbar">
       <ul class="navbar-nav mr-auto">
-        ${base.html_navigation_links_entries(navigation_links)}
+        ${helper.html_navigation_links_entries(navigation_links)}
         ${template_hooks['menu']()}
       </ul>
 
@@ -46,10 +46,10 @@ ${base.html_head_end()}
       % endif
 
       <ul class="navbar-nav navbar-right">
-        ${base.html_navigation_links_entries(navigation_alt_links)}
+        ${helper.html_navigation_links_entries(navigation_alt_links)}
         <%block name="belowtitle">
           % if len(translations) > 1:
-            <li>${base.html_translations()}</li>
+            <li>${helper.html_translations()}</li>
           % endif
         </%block>
         ${template_hooks['menu_alt']()}
@@ -63,14 +63,14 @@ ${base.html_head_end()}
     <!--Body content-->
     <div class="row">
 
-      <div class="col-sm-9">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         ${template_hooks['page_header']()}
         <%block name="content"></%block>
       </div>
 
-      <div class="col-sm-3 sidebar">
-       ${base.sidebar_about()}
-       ${base.sidebar_categories()}
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 sidebar">
+       ${helper.sidebar_about()}
+       ${helper.sidebar_categories()}
       </div><!--.sidebar-->
     </div><!--.row-->
 
@@ -90,23 +90,24 @@ ${base.html_head_end()}
   <div id="scroll-top-stick"></div>
 </div>
 
-${base.late_load_js()}
-  <!-- fancy dates -->
-  <script>
-    moment.locale("${momentjs_locales[lang]}");
-    fancydates(${date_fanciness}, ${js_date_format});
-  </script>
-  <!-- end fancy dates -->
+${helper.late_load_js()}
 
-  <%block name="extra_js"></%block>
+<!-- fancy dates -->
+<script>
+  moment.locale("${momentjs_locales[lang]}");
+  fancydates(${date_fanciness}, ${js_date_format});
+</script>
+<!-- end fancy dates -->
 
-  % if annotations and post and not post.meta('noannotations'):
-    ${notes.code()}
-  % elif not annotations and post and post.meta('annotations'):
-    ${notes.code()}
-  % endif
+<%block name="extra_js"></%block>
 
-  ${body_end}
-  ${template_hooks['body_end']()}
+% if annotations and post and not post.meta('noannotations'):
+  ${notes.code()}
+% elif not annotations and post and post.meta('annotations'):
+  ${notes.code()}
+% endif
+
+${body_end}
+${template_hooks['body_end']()}
 </body>
 </html>
